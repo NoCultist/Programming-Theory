@@ -5,7 +5,12 @@ using UnityEngine;
 public class Wheel : MonoBehaviour
 {
     Rigidbody rb;
-    
+
+    public bool wheelFrontLeft;
+    public bool wheelFrontRight;
+    public bool wheelBackLeft;
+    public bool wheelBackRight;
+
     [Header("Suspension")]
     public float restLength;
     public float springTravel;
@@ -21,8 +26,14 @@ public class Wheel : MonoBehaviour
     private float damperForce;
 
     private Vector3 suspensionForce;
+    private Vector3 wheelVelocityLS; //Local Space
+    private float Fx;
+    private float Fy;
+    private float wheelAngle;
 
     [Header("Wheel")]
+    public float steerAngle;
+    public float steerTime;
     public float wheelRadius;
 
     private void Start()
@@ -30,6 +41,14 @@ public class Wheel : MonoBehaviour
         rb = transform.root.GetComponent<Rigidbody>();
         minLength = restLength - springTravel;
         maxLength = restLength + springTravel;
+    }
+
+    private void Update()
+    {
+        wheelAngle = Mathf.Lerp(wheelAngle, steerAngle, steerTime * Time.deltaTime);
+        transform.localRotation = Quaternion.Euler(Vector3.up * wheelAngle);
+    
+        Debug.DrawRay(transform.position, -transform.up * (springLength + wheelRadius), Color.green);
     }
 
     private void FixedUpdate()
@@ -44,7 +63,12 @@ public class Wheel : MonoBehaviour
             damperForce = damperStiffness * springVelocity;
 
             suspensionForce = (springForce + damperForce) * transform.up;
-            rb.AddForceAtPosition(suspensionForce, hit.point);
+
+            wheelVelocityLS = transform.InverseTransformDirection(rb.GetPointVelocity(hit.point));
+            Fx = Input.GetAxis("Vertical") * 0.5f * springForce;
+            Fy = wheelVelocityLS.x * springForce;
+
+            rb.AddForceAtPosition(suspensionForce + (Fx * transform.forward) + (Fy * -transform.right), hit.point);
         }
     }
 }
