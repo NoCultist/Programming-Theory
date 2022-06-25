@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b1c852da4c41d541b5683e9631a62a2, type: 3}
   m_Name: Speeder
   m_EditorClassIdentifier: Assembly-CSharp::CarController/Car
-  maxForwardSpeed: 60
-  maxBackwardSpeed: 10
-  forwardAcceleration: 7
-  backwardAcceleration: 0.5
-  turnSpeed: 60
+  maxForwardSpeed: 120
+  maxBackwardSpeed: 60
+  forwardAcceleration: 10
+  backwardAcceleration: 2
+  turnSpeed: 90

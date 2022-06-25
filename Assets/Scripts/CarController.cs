@@ -2,20 +2,22 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
-    private Rigidbody rb;
+    public Rigidbody rb;
     
     public Car car;
     public float alignToGroundTime;
     public LayerMask groundLayer;
+    public Transform centerOfMass;
 
     private float moveInput;
     private float turnInput;
-    private bool isCarGrounded;
+    [SerializeField] private bool isCarGrounded;
     
     void Start()
     {
         // Detach Sphere from car
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
+        rb.centerOfMass = centerOfMass.position;
     }
 
     void Update()
@@ -28,11 +30,12 @@ public class CarController : MonoBehaviour
         float newRot = turnInput * car.turnSpeed * Time.deltaTime * moveInput;
 
         // Set Cars Position to Our Sphere
-        // transform.position = rb.transform.position;
+         transform.position = rb.transform.position;
 
         // Raycast to the ground and get normal to align car with it.
         RaycastHit hit;
-        isCarGrounded = Physics.Raycast(transform.position, -transform.up, out hit, 1f, groundLayer);
+        isCarGrounded = Physics.Raycast(rb.worldCenterOfMass, -transform.up, out hit, 1f, groundLayer);
+        Debug.DrawLine(rb.worldCenterOfMass, hit.point);
 
         // Rotate Car to align with ground
         Quaternion toRotateTo = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
