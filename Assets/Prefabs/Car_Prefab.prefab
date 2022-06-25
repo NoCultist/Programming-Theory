@@ -106,7 +106,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3138550098731717138}
-  - component: {fileID: 3138550098731717139}
   m_Layer: 0
   m_Name: Wheele_FL
   m_TagString: Untagged
@@ -129,29 +128,6 @@ Transform:
   m_Father: {fileID: 3138550099102099393}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3138550098731717139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3138550098731717137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8c94e7dfae50af4d9cf9b2cec5c3aba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wheelFrontLeft: 1
-  wheelFrontRight: 0
-  wheelBackLeft: 0
-  wheelBackRight: 0
-  restLength: 0.5
-  springTravel: 0.3
-  springStiffness: 30000
-  damperStiffness: 4000
-  steerAngle: 0
-  steerTime: 8
-  wheelRadius: 0.33
 --- !u!1 &3138550098905535065
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +137,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3138550098905535066}
-  - component: {fileID: 3138550098905535067}
   m_Layer: 0
   m_Name: Wheele_FR
   m_TagString: Untagged
@@ -184,29 +159,6 @@ Transform:
   m_Father: {fileID: 3138550099102099393}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3138550098905535067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3138550098905535065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8c94e7dfae50af4d9cf9b2cec5c3aba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wheelFrontLeft: 0
-  wheelFrontRight: 1
-  wheelBackLeft: 0
-  wheelBackRight: 0
-  restLength: 0.5
-  springTravel: 0.3
-  springStiffness: 30000
-  damperStiffness: 4000
-  steerAngle: 0
-  steerTime: 8
-  wheelRadius: 0.33
 --- !u!1 &3138550099102099399
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,16 +226,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf64b02d1c05eff44acc77b09c5feb16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wheels:
-  - {fileID: 3138550098731717139}
-  - {fileID: 3138550098905535067}
-  - {fileID: 3138550099919154983}
-  - {fileID: 3138550099540648126}
-  fourByFour: 0
-  tank: 0
-  wheelBase: 2.629
-  rearTrack: 1.525
-  turnRadius: 10.8
+  car: {fileID: 0}
+  modifiedDrag: 0
+  alignToGroundTime: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &3138550099540648124
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,7 +241,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3138550099540648125}
-  - component: {fileID: 3138550099540648126}
   m_Layer: 0
   m_Name: Wheele_BR
   m_TagString: Untagged
@@ -316,29 +263,6 @@ Transform:
   m_Father: {fileID: 3138550099102099393}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3138550099540648126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3138550099540648124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8c94e7dfae50af4d9cf9b2cec5c3aba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wheelFrontLeft: 0
-  wheelFrontRight: 0
-  wheelBackLeft: 0
-  wheelBackRight: 1
-  restLength: 0.5
-  springTravel: 0.3
-  springStiffness: 30000
-  damperStiffness: 4000
-  steerAngle: 0
-  steerTime: 8
-  wheelRadius: 0.33
 --- !u!1 &3138550099545560846
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,7 +317,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3138550099919154982}
-  - component: {fileID: 3138550099919154983}
   m_Layer: 0
   m_Name: Wheele_BL
   m_TagString: Untagged
@@ -416,26 +339,3 @@ Transform:
   m_Father: {fileID: 3138550099102099393}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3138550099919154983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3138550099919154981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8c94e7dfae50af4d9cf9b2cec5c3aba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wheelFrontLeft: 0
-  wheelFrontRight: 0
-  wheelBackLeft: 1
-  wheelBackRight: 0
-  restLength: 0.5
-  springTravel: 0.3
-  springStiffness: 30000
-  damperStiffness: 4000
-  steerAngle: 0
-  steerTime: 8
-  wheelRadius: 0.33

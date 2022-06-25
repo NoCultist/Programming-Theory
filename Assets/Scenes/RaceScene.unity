@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 415783424}
   - component: {fileID: 415783423}
   - component: {fileID: 415783426}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,8 +296,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1366283129}
-  m_LocalRotation: {x: 0.29838413, y: 0.0020062097, z: -0.00062716246, w: 0.9544436}
-  m_LocalPosition: {x: 540.9743, y: 6.3332405, z: -15.255761}
+  m_LocalRotation: {x: 0.25494403, y: -0.0029159288, z: 0.0010034991, w: 0.96695095}
+  m_LocalPosition: {x: 540.96075, y: 4.989264, z: -13.534452}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -398,6 +398,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!54 &1808740988 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 3138550099102099392, guid: f78c69cb32bb2f940af828a34a9fc01f, type: 3}
+  m_PrefabInstance: {fileID: 3138550099751228860}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3138550099751228860
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -405,9 +410,69 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3138550099102099392, guid: f78c69cb32bb2f940af828a34a9fc01f, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxSpeed
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: steerTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: acceleration
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damperStiffness
+      value: 4000
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: springStiffness
+      value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxSpeed
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: steerTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: acceleration
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damperStiffness
+      value: 4000
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: springStiffness
+      value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138550099102099392, guid: f78c69cb32bb2f940af828a34a9fc01f, type: 3}
+      propertyPath: m_Drag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138550099102099392, guid: f78c69cb32bb2f940af828a34a9fc01f, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3138550099102099393, guid: f78c69cb32bb2f940af828a34a9fc01f, type: 3}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138550099102099393, guid: f78c69cb32bb2f940af828a34a9fc01f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138550099102099393, guid: f78c69cb32bb2f940af828a34a9fc01f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3138550099102099393, guid: f78c69cb32bb2f940af828a34a9fc01f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -449,9 +514,109 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3138550099102099394, guid: f78c69cb32bb2f940af828a34a9fc01f, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 1808740988}
+    - target: {fileID: 3138550099102099394, guid: f78c69cb32bb2f940af828a34a9fc01f, type: 3}
+      propertyPath: car
+      value: 
+      objectReference: {fileID: 11400000, guid: c85c5a96cf836c0449eece0c4a3ac72b, type: 2}
+    - target: {fileID: 3138550099102099394, guid: f78c69cb32bb2f940af828a34a9fc01f, type: 3}
+      propertyPath: tank
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138550099102099394, guid: f78c69cb32bb2f940af828a34a9fc01f, type: 3}
+      propertyPath: fwdSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138550099102099394, guid: f78c69cb32bb2f940af828a34a9fc01f, type: 3}
+      propertyPath: maxSpeed
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138550099102099394, guid: f78c69cb32bb2f940af828a34a9fc01f, type: 3}
+      propertyPath: revSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138550099102099394, guid: f78c69cb32bb2f940af828a34a9fc01f, type: 3}
+      propertyPath: sphereRB
+      value: 
+      objectReference: {fileID: 1808740988}
+    - target: {fileID: 3138550099102099394, guid: f78c69cb32bb2f940af828a34a9fc01f, type: 3}
+      propertyPath: turnSpeed
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138550099102099394, guid: f78c69cb32bb2f940af828a34a9fc01f, type: 3}
+      propertyPath: turnRadius
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138550099102099394, guid: f78c69cb32bb2f940af828a34a9fc01f, type: 3}
+      propertyPath: acceleration
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138550099102099394, guid: f78c69cb32bb2f940af828a34a9fc01f, type: 3}
+      propertyPath: modifiedDrag
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138550099102099394, guid: f78c69cb32bb2f940af828a34a9fc01f, type: 3}
+      propertyPath: fwdAcceleration
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138550099102099394, guid: f78c69cb32bb2f940af828a34a9fc01f, type: 3}
+      propertyPath: revAcceleration
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138550099102099394, guid: f78c69cb32bb2f940af828a34a9fc01f, type: 3}
+      propertyPath: alignToGroundTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138550099102099394, guid: f78c69cb32bb2f940af828a34a9fc01f, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3138550099102099399, guid: f78c69cb32bb2f940af828a34a9fc01f, type: 3}
       propertyPath: m_Name
       value: Car
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxSpeed
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: steerTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: acceleration
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damperStiffness
+      value: 4000
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: springStiffness
+      value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxSpeed
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: steerTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: acceleration
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damperStiffness
+      value: 4000
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: springStiffness
+      value: 30000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f78c69cb32bb2f940af828a34a9fc01f, type: 3}

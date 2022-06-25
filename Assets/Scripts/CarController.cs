@@ -1,65 +1,58 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
-    public Wheel[] wheels;
+    private Rigidbody rb;
+    
+    public Car car;
+    public float alignToGroundTime;
+    public LayerMask groundLayer;
 
-    [Header("Car Specs")]
-    public bool fourByFour = false;
-    public bool tank = false;
-    public float wheelBase;
-    public float rearTrack;
-    public float turnRadius;
+    private float moveInput;
+    private float turnInput;
+    private bool isCarGrounded;
+    
+    void Start()
+    {
+        // Detach Sphere from car
+        rb = GetComponent<Rigidbody>();
+    }
 
-    //[Header("Inputs")]
-    private float steerInput;
-    private float ackermannAngleLeft;
-    private float ackermannAngleRight;
-
-    // Update is called once per frame
     void Update()
     {
-        steerInput = Input.GetAxis("Horizontal");
+        // Get Input
+        moveInput = Input.GetAxisRaw("Vertical");
+        turnInput = Input.GetAxisRaw("Horizontal");
 
-        if(steerInput > 0) //turning right
+        // Calculate Turning Rotation
+        float newRot = turnInput * car.turnSpeed * Time.deltaTime * moveInput;
+
+        // Set Cars Position to Our Sphere
+        // transform.position = rb.transform.position;
+
+        // Raycast to the ground and get normal to align car with it.
+        RaycastHit hit;
+        isCarGrounded = Physics.Raycast(transform.position, -transform.up, out hit, 1f, groundLayer);
+
+        // Rotate Car to align with ground
+        Quaternion toRotateTo = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+        transform.rotation = Quaternion.Slerp(transform.rotation, toRotateTo, alignToGroundTime * Time.deltaTime);
+
+        // Calculate Movement Direction
+        moveInput *= moveInput > 0 ? car.forwardAcceleration : car.backwardAcceleration;
+
+        if (isCarGrounded)
+            transform.Rotate(0, newRot, 0, Space.World);
+    }
+
+    private void FixedUpdate()
+    {
+        if (isCarGrounded && rb.velocity.z < car.maxBackwardSpeed)
         {
-            ackermannAngleLeft = Mathf.Rad2Deg * Mathf.Atan(wheelBase / (turnRadius + (rearTrack / 2))) * steerInput;
-            ackermannAngleRight = Mathf.Rad2Deg * Mathf.Atan(wheelBase / (turnRadius - (rearTrack / 2))) * steerInput;
-        } else if(steerInput < 0) // turning left
-        {
-            ackermannAngleLeft = Mathf.Rad2Deg * Mathf.Atan(wheelBase / (turnRadius - (rearTrack / 2))) * steerInput;
-            ackermannAngleRight = Mathf.Rad2Deg * Mathf.Atan(wheelBase / (turnRadius + (rearTrack / 2))) * steerInput;
+            rb.AddForce(transform.forward * moveInput * car.forwardAcceleration, ForceMode.Acceleration); // Add Movement
+            Debug.Log("Velocity = " + rb.velocity.z);
         }
         else
-        {
-            ackermannAngleLeft = 0;
-            ackermannAngleRight = 0;
-        }
-        foreach (Wheel w in wheels)
-        {
-            if (w.wheelFrontLeft)
-                w.steerAngle = ackermannAngleLeft;
-            if (w.wheelFrontRight)
-                w.steerAngle = ackermannAngleRight;
-            if (fourByFour)
-            {
-                if (tank)
-                {
-                    if (w.wheelBackLeft)
-                        w.steerAngle = -ackermannAngleLeft;
-                    if (w.wheelBackRight)
-                        w.steerAngle = -ackermannAngleRight;
-                }
-                else
-                {
-                    if (w.wheelBackLeft)
-                        w.steerAngle = ackermannAngleLeft;
-                    if (w.wheelBackRight)
-                        w.steerAngle = ackermannAngleRight;
-                }
-            }
-        }
+            rb.AddForce(transform.up * -200f); // Add Gravity
     }
 }
