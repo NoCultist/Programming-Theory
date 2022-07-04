@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1c852da4c41d541b5683e9631a62a2, type: 3}
+  m_Name: Speeder
+  m_EditorClassIdentifier: Assembly-CSharp::CarController/Car
+  Prefab: {fileID: 6587679896884066870, guid: 92ef9452be647fe4696b31d10e2feab7, type: 3}
+  Mass: 1100
+  MaxForwardSpeed: 250
+  MaxBackwardSpeed: 10
+  ForwardAcceleration: 100
+  BackwardAcceleration: 25
+  TurnSpeed: 70

@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b1c852da4c41d541b5683e9631a62a2, type: 3}
-  m_Name: Speeder
+  m_Name: Bus
   m_EditorClassIdentifier: Assembly-CSharp::CarController/Car
-  maxForwardSpeed: 120
-  maxBackwardSpeed: 60
-  forwardAcceleration: 10
-  backwardAcceleration: 2
-  turnSpeed: 90
+  Prefab: {fileID: 8860229839205341003, guid: 77e39f3a8b520fa499e9c38fd4e42de1, type: 3}
+  Mass: 1600
+  MaxForwardSpeed: 120
+  MaxBackwardSpeed: 60
+  ForwardAcceleration: 30
+  BackwardAcceleration: 15
+  TurnSpeed: 30
